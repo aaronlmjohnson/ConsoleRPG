@@ -1,0 +1,13 @@
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\bin\Debug\netcoreapp3.1\ConsoleRPG.exe
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\bin\Debug\netcoreapp3.1\ConsoleRPG.deps.json
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\bin\Debug\netcoreapp3.1\ConsoleRPG.runtimeconfig.json
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\bin\Debug\netcoreapp3.1\ConsoleRPG.runtimeconfig.dev.json
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\bin\Debug\netcoreapp3.1\ConsoleRPG.dll
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\bin\Debug\netcoreapp3.1\ConsoleRPG.pdb
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\obj\Debug\netcoreapp3.1\ConsoleRPG.csprojAssemblyReference.cache
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\obj\Debug\netcoreapp3.1\ConsoleRPG.AssemblyInfoInputs.cache
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\obj\Debug\netcoreapp3.1\ConsoleRPG.AssemblyInfo.cs
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\obj\Debug\netcoreapp3.1\ConsoleRPG.csproj.CoreCompileInputs.cache
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\obj\Debug\netcoreapp3.1\ConsoleRPG.dll
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\obj\Debug\netcoreapp3.1\ConsoleRPG.pdb
+C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\ConsoleRPG\obj\Debug\netcoreapp3.1\ConsoleRPG.genruntimeconfig.cache
