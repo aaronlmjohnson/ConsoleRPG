@@ -41,15 +41,20 @@ namespace ConsoleRPG
             public void Draw(GameObject gObject)
             {
                 for (int i = 0; i < gObject.Height; i++)
-                {
                     for (int j = 0; j < gObject.Width; j++)
-                    {
-
                         window[gObject.Y + i, gObject.X + j] = gObject.Body[i, j];
-                        
-                    }
-                    
-                }
+            }
+
+            public void Update()
+            {
+                Display();
+                Console.SetCursorPosition(0, Console.WindowHeight);
+                Console.WriteLine();
+                
+                //foreach(GameObject gObject in gObjects)
+                //    Draw(gObject);
+
+
             }
         }
 
@@ -127,18 +132,42 @@ namespace ConsoleRPG
                 get => body;
             }
         }
+
+        class Player : GameObject
+        {
+            public Player(int _x, int _y) 
+                :base(_x, _y, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\Player.txt")
+            {
+
+            }
+
+        }
         static void Main(string[] args)
         {
-            Window screen = new Window();
-            screen.Fill('.');
+            //Window screen = new Window();
+            //screen.Fill('.');
    
 
-            //GameObject shop = new GameObject(0, 0, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\shop.txt");
+            GameObject shop = new GameObject(10, 10, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\shop.txt");
             GameObject house = new GameObject(0, 10, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\house.txt");
+            Player player = new Player(20, 20);
             //screen.Draw(shop);
-            screen.Draw(house);
-
-            screen.Display();
+            //screen.Draw(house);
+            //screen.Draw(player);
+            
+            for(int y = 0; y < shop.Body.GetLength(0); y++)
+            {
+                for(int x = 0; x < shop.Body.GetLength(1); x++)
+                {
+                    Console.SetCursorPosition(shop.X + x, shop.Y + y);
+                    Console.Write(shop.Body[y, x]);
+                }
+            }
+            
+            //while (true)
+            //{
+            //    screen.Update();
+            //}
         }
     }
 }
