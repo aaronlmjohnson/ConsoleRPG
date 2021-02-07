@@ -38,17 +38,17 @@ namespace ConsoleRPG
                 }
             }
 
-            public void Draw(int rowStart, int colStart, char fill)
+            public void Draw(GameObject gObject)
             {
-                int objWidth = 5;
-                int objHeight = 3;
-
-                for (int i = rowStart; i < (rowStart + objHeight); i++)
+                for (int i = 0; i < gObject.Height; i++)
                 {
-                    for (int j = colStart; j < (colStart + objWidth); j++)
+                    for (int j = 0; j < gObject.Width; j++)
                     {
-                        window[i, j] = fill;
+
+                        window[gObject.Y + i, gObject.X + j] = gObject.Body[i, j];
+                        
                     }
+                    
                 }
             }
         }
@@ -60,11 +60,11 @@ namespace ConsoleRPG
             private int x;
             private int y;
             private char[,] body;
-            public GameObject(int _x, int _y)
+            public GameObject(int _x, int _y, string _filePath)
             {
                 x = _x;
                 y = _y;
-                LoadAsset(@"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\shop.txt");  
+                LoadAsset(_filePath);  
             }
 
             private void LoadAsset(string filePath)
@@ -97,16 +97,48 @@ namespace ConsoleRPG
                     Console.WriteLine(row);
                 }
             }
+
+            public int Width
+            {
+                get => width;
+                set { width = value; }
+            }
+
+            public int Height
+            {
+                get => height;
+                set { height = value; }
+            }
+
+            public int X
+            {
+                get => x;
+                set { x = value; }
+            }
+
+            public int Y
+            {
+                get => y;
+                set { y = value; }
+            }
+
+            public char[,] Body
+            {
+                get => body;
+            }
         }
         static void Main(string[] args)
         {
-            //Window screen = new Window();
-            //screen.Fill('.');
-            //screen.Draw(0, 0, '#');
-            //screen.Display();
+            Window screen = new Window();
+            screen.Fill('.');
+   
 
-            GameObject shop = new GameObject(0, 0);
-            shop.Display();
+            //GameObject shop = new GameObject(0, 0, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\shop.txt");
+            GameObject house = new GameObject(0, 10, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\house.txt");
+            //screen.Draw(shop);
+            screen.Draw(house);
+
+            screen.Display();
         }
     }
 }
