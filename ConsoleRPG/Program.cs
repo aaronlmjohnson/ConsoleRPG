@@ -38,23 +38,61 @@ namespace ConsoleRPG
                 }
             }
 
-            public void Draw(GameObject gObject)
+            private void AddToScene(GameObject gObj)
             {
-                for (int i = 0; i < gObject.Height; i++)
-                    for (int j = 0; j < gObject.Width; j++)
-                        window[gObject.Y + i, gObject.X + j] = gObject.Body[i, j];
+                for (int i = 0; i < gObj.Height; i++)
+                {
+                    for (int j = 0; j < gObj.Width; j++)
+                    {
+                        if (InBounds(gObj))
+                            window[gObj.Y + i, gObj.X + j] = gObj.Body[i, j];
+                        else
+                            return;
+                    }
+                }
+                
             }
 
-            public void Update()
+            public void Draw(GameObject gObj)
             {
-                Display();
-                Console.SetCursorPosition(0, Console.WindowHeight);
-                Console.WriteLine();
+                AddToScene(gObj);
+                for(int y = 0; y < gObj.Height; y++)
+                {
+                    for(int x = 0; x < gObj.Width; x++)
+                    {
+                        Console.SetCursorPosition(gObj.X + x, gObj.Y + y);
+                        Console.WriteLine(gObj.Body[y, x]);
+                    }
+                }
+            }
+
+            public void Update(Player player)
+            {
+                while (true)
+                {
+                    player.Move();
+                    Draw(player);
+                }
                 
+
+
                 //foreach(GameObject gObject in gObjects)
                 //    Draw(gObject);
 
 
+            }
+
+            private bool InBounds(GameObject gObj)
+            {
+                if(gObj.X < 0  || gObj.Y < 0)
+                {
+                    return false;
+                }
+                else if (gObj.X + gObj.Width >= width || gObj.Y + gObj.Height >= height)
+                {
+                    return false;
+                }
+                return true;
             }
         }
 
@@ -101,6 +139,7 @@ namespace ConsoleRPG
                     }
                     Console.WriteLine(row);
                 }
+                
             }
 
             public int Width
@@ -141,33 +180,70 @@ namespace ConsoleRPG
 
             }
 
+            public void Move()
+            {
+                ConsoleKeyInfo input;
+
+                input = Console.ReadKey();
+
+                if (input.Key == ConsoleKey.LeftArrow)
+                {
+                    if (X - 1 < 0)
+                        return;
+                    else
+                        X -= 1; 
+                }
+                else if (input.Key == ConsoleKey.RightArrow)
+                {
+                    if (X + 1 > 50)
+                        return;
+                    else
+                        X += 1;
+                }
+                else if (input.Key == ConsoleKey.UpArrow)
+                {
+                    if (Y - 1 < 0)
+                        return;
+                    else
+                        Y -= 1;
+                }
+                else if (input.Key == ConsoleKey.DownArrow)
+                {
+                    if (Y + 1 > 50)
+                        return;
+                    else
+                        Y += 1;
+                }// TODO: pass window dimensions to player
+                // encapsulate movement code
+
+            }
+            // movement
+            // when pressing the A button have character move left
+            // when pressing the D button have the character move right
+            // When A is pressed subtract -1 from all of the player's positions in its body
+            //  if any of the values are less than 0 
+            //    reset its body to its original state and return
+
         }
         static void Main(string[] args)
         {
-            //Window screen = new Window();
+            Window screen = new Window();
             //screen.Fill('.');
-   
 
-            GameObject shop = new GameObject(10, 10, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\shop.txt");
+
+            GameObject shop = new GameObject(50, 0, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\shop.txt");
             GameObject house = new GameObject(0, 10, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\house.txt");
             Player player = new Player(20, 20);
             //screen.Draw(shop);
             //screen.Draw(house);
             //screen.Draw(player);
-            
-            for(int y = 0; y < shop.Body.GetLength(0); y++)
-            {
-                for(int x = 0; x < shop.Body.GetLength(1); x++)
-                {
-                    Console.SetCursorPosition(shop.X + x, shop.Y + y);
-                    Console.Write(shop.Body[y, x]);
-                }
-            }
-            
-            //while (true)
-            //{
-            //    screen.Update();
-            //}
+            screen.Update(player);
+  
+            //screen.Display();
+
+
+
+
         }
     }
 }
