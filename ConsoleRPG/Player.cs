@@ -24,14 +24,13 @@ namespace ConsoleRPG
             input = Console.ReadKey();
 
             if (input.Key == ConsoleKey.LeftArrow)
-                MoveLeft();
+                X += InBounds(-1, 0) ? -1 : 0;
             if (input.Key == ConsoleKey.RightArrow)
-                MoveRight();
+                X += InBounds(1, 0) ? 1 : 0;
             if (input.Key == ConsoleKey.UpArrow)
-                MoveUp();
+                Y += InBounds(0, -1) ? -1 : 0;
             if (input.Key == ConsoleKey.DownArrow)
-                MoveDown();
-            // TODO: Clear grid of old player position
+                Y += InBounds(0, 1) ? 1 : 0;
         }
 
         public void Draw()
@@ -50,47 +49,19 @@ namespace ConsoleRPG
             
         }
 
-        private void MoveRight()
+        private bool InBounds(int xMove, int yMove)
         {
-            if (X + 1 >= windowWidth - 2)
-            {
-                return;
-            }
-            else
-            {
-                X += 1;
-            }
+            if (yMove > 0)
+                return Y + yMove >= windowHeight - 1 ? false : true;
+            else if (yMove < 0)
+                return Y + yMove < 0 ? false : true;
+            else if (xMove > 0)
+                return X + xMove >= windowWidth - 1 ? false : true;
+            else if (X + xMove < 0)
+                return X + xMove < 0 ? false : true;
 
+            return true;
         }
-
-        private void MoveLeft()
-        {
-            if (X - 1 < 0)
-                return;
-            else
-            {
-
-                X -= 1;
-            }
-
-        }
-
-        private void MoveUp()
-        {
-            if (Y - 1 < 0)
-                return;
-            else
-                Y -= 1;
-        }
-
-        private void MoveDown()
-        {
-            if (Y + 1 >= windowHeight - 1)
-                return;
-            else
-                Y += 1;
-        }
-
         public void DisplayPosition()
         {
             Console.SetCursorPosition(20, 20);

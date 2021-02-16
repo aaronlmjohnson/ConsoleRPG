@@ -56,20 +56,6 @@ namespace ConsoleRPG
 
         }
 
-
-        //public void Draw(GameObject gObj)
-        //{
-        //    AddToScene(gObj);
-        //    for(int y = 0; y < gObj.Height; y++)
-        //    {
-        //        for(int x = 0; x < gObj.Width; x++)
-        //        {
-        //            Console.SetCursorPosition(gObj.X + x, gObj.Y + y);
-        //            Console.WriteLine(gObj.Body[y, x]);
-        //        }
-        //    }
-        //}
-
         public void DrawScene()
         {
             Console.Clear();
