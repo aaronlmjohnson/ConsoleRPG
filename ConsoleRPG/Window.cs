@@ -7,9 +7,10 @@ namespace ConsoleRPG
     class Window
     {
         private char[,] window;
-        private int width = Console.WindowWidth;
-        private int height = Console.WindowHeight;
-
+        private int height = 50;
+        private int width = 100;
+        private Player player { get;  set; }
+        private GameObject[] gObjs { get; set; }
         public Window()
         {
             window = new char[height, width];
@@ -35,22 +36,19 @@ namespace ConsoleRPG
                 for (int j = 0; j < width; j++)
                 {
                     row += window[i, j];
-                    //char element = window[i, j];
-                    //Console.SetCursorPosition(j, i);
-                    //Console.Write(element);
                 }
                 Console.WriteLine(row);
             }
         }
 
-        public void Draw(GameObject gObj)
+        public void DrawObject(GameObject gObj)
         {
-            for (int i = 0; i < gObj.Height; i++)
+            for (int y = 0; y < gObj.Height; y++)
             {
-                for (int j = 0; j < gObj.Width; j++)
+                for (int x = 0; x < gObj.Width; x++)
                 {
                     if (InBounds(gObj))
-                        window[gObj.Y + i, gObj.X + j] = gObj.Body[i, j];
+                        window[gObj.Y + y, gObj.X + x] = gObj.Body[y, x];
                     else
                         return;
                 }
@@ -58,17 +56,6 @@ namespace ConsoleRPG
 
         }
 
-        public void Erase(int x, int y, int width, int height)
-        {
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    window[y + i, x + j] = ' ';
-                }
-            }
-
-        }
 
         //public void Draw(GameObject gObj)
         //{
@@ -83,21 +70,26 @@ namespace ConsoleRPG
         //    }
         //}
 
-        public void DrawScene(Player player)
+        public void DrawScene()
         {
             Console.Clear();
             Display();
             
+
             player.Draw();
         }
 
-        public void Update(Player player)
+        public void Update()
         {
+            foreach (GameObject gObj in gObjs)
+            {
+                DrawObject(gObj);
+            }
             while (true)
             {
-                DrawScene(player);
+                DrawScene();
                 player.Move();
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(20);
 
             }
 
@@ -124,6 +116,20 @@ namespace ConsoleRPG
         public int Width
         {
             get => width;
+        }
+
+        public Player Player
+        {
+            get => player;
+
+            set { player = value; }
+        }
+
+        public GameObject[] GObjs
+        {
+            get => gObjs;
+
+            set { gObjs = value; }
         }
     }
 }

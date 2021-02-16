@@ -6,14 +6,15 @@ namespace ConsoleRPG
 {
     class Player : GameObject
     {
-        private Window window;
         private ConsoleColor playerColor;
-        public Player(int _x, int _y, Window _window)
+        private int windowHeight;
+        private int windowWidth;
+        public Player(int _x, int _y, int _windowHeight, int _windowWidth)
             : base(_x, _y, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\Player.txt")
         {
-            window = _window;
             playerColor = ConsoleColor.Blue;
-
+            windowHeight = _windowHeight;
+            windowWidth = _windowWidth;
         }
 
         public void Move()
@@ -51,7 +52,7 @@ namespace ConsoleRPG
 
         private void MoveRight()
         {
-            if (X + 1 >= window.Width - 2)
+            if (X + 1 >= windowWidth - 2)
             {
                 return;
             }
@@ -84,16 +85,17 @@ namespace ConsoleRPG
 
         private void MoveDown()
         {
-            if (Y + 1 >= window.Height - 1)
+            if (Y + 1 >= windowHeight - 1)
                 return;
             else
                 Y += 1;
         }
 
-        private void DisplayPosition()
+        public void DisplayPosition()
         {
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine(X);
+            Console.SetCursorPosition(20, 20);
+            Console.WriteLine($"meow:{X}");
+
         }
     }
 }

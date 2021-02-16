@@ -11,11 +11,13 @@ namespace ConsoleRPG
         private int x;
         private int y;
         private char[,] body;
+        private  ConsoleColor color;
         public GameObject(int _x, int _y, string _filePath)
         {
             x = _x;
             y = _y;
             LoadAsset(_filePath);
+            color = ConsoleColor.Yellow;
         }
 
         private void LoadAsset(string filePath)
@@ -38,6 +40,7 @@ namespace ConsoleRPG
 
         public void Display()
         {
+            Console.ForegroundColor = color;
             for (int i = 0; i < height; i++)
             {
                 string row = "";
@@ -48,7 +51,24 @@ namespace ConsoleRPG
                 Console.WriteLine(row);
             }
 
+            Console.ResetColor();
         }
+
+        //public void Display()
+        //{
+        //    Console.ForegroundColor = color;
+
+        //    for (int yY = 0; yY < Height; yY++)
+        //    {
+        //        for (int xX = 0; xX < Width; xX++)
+        //        {
+        //            Console.SetCursorPosition(xX + X, yY + Y);
+        //            Console.Write(Body[0, 0]);
+        //        }
+        //    }
+        //    Console.ResetColor();
+
+        //}
 
         public int Width
         {
