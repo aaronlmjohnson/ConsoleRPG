@@ -9,12 +9,14 @@ namespace ConsoleRPG
         private ConsoleColor playerColor;
         private int windowHeight;
         private int windowWidth;
-        public Player(int _x, int _y, int _windowHeight, int _windowWidth)
+        private Window window;
+        public Player(int _x, int _y, int _windowHeight, int _windowWidth, Window _window)
             : base(_x, _y, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\Player.txt")
         {
             playerColor = ConsoleColor.Blue;
             windowHeight = _windowHeight;
             windowWidth = _windowWidth;
+            window = _window;
         }
 
         public void Move()
@@ -30,7 +32,7 @@ namespace ConsoleRPG
             if (input.Key == ConsoleKey.UpArrow)
                 Y += InBounds(0, -1) ? -1 : 0;
             if (input.Key == ConsoleKey.DownArrow)
-                Y += InBounds(0, 1) ? 1 : 0;
+                Y += InBounds(0, 1)  ? 1 : 0;
         }
 
         public void Draw()
@@ -51,17 +53,35 @@ namespace ConsoleRPG
 
         private bool InBounds(int xMove, int yMove)
         {
+            bool valid;
             if (yMove > 0)
-                return Y + yMove >= windowHeight - 1 ? false : true;
+                valid =  Y + yMove >= windowHeight - 1 ? false : true;
             else if (yMove < 0)
-                return Y + yMove < 0 ? false : true;
+                valid =  Y + yMove < 0 ? false : true;
             else if (xMove > 0)
-                return X + xMove >= windowWidth - 1 ? false : true;
+                valid =  X + xMove >= windowWidth - 1 ? false : true;
             else if (X + xMove < 0)
-                return X + xMove < 0 ? false : true;
+                valid =  X + xMove < 0 ? false : true;
 
-            return true;
+            valid = window.Grid[Y + yMove, X + xMove + 2] == ' ' && window.Grid[Y + yMove + 1, X + xMove] == ' ' ? true : false;
+
+
+            return valid;
         }
+
+        private bool Collided(int xMove, int yMove)
+        {
+            for (int i = Y; i < 2; i++)
+            {
+                for (int j = X; j < 3; j++)
+                {
+                    if (window.Grid[i + yMove, j + xMove] == '#')
+                        return true;
+                }
+            }
+            return false;
+        }
+
         public void DisplayPosition()
         {
             Console.SetCursorPosition(20, 20);

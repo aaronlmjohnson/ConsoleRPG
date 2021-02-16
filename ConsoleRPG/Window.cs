@@ -6,14 +6,15 @@ namespace ConsoleRPG
 {
     class Window
     {
-        private char[,] window;
+        private char[,] grid;
         private int height = 50;
         private int width = 100;
         private Player player { get;  set; }
         private GameObject[] gObjs { get; set; }
         public Window()
         {
-            window = new char[height, width];
+            grid = new char[height, width];
+            Fill(' ');
         }
 
         public void Fill(char fillChar)
@@ -22,7 +23,7 @@ namespace ConsoleRPG
             {
                 for (int j = 0; j < width; j++)
                 {
-                    window[i, j] = fillChar;
+                    grid[i, j] = fillChar;
                 }
             }
         }
@@ -35,7 +36,7 @@ namespace ConsoleRPG
 
                 for (int j = 0; j < width; j++)
                 {
-                    row += window[i, j];
+                    row += grid[i, j];
                 }
                 Console.WriteLine(row);
             }
@@ -48,7 +49,7 @@ namespace ConsoleRPG
                 for (int x = 0; x < gObj.Width; x++)
                 {
                     if (InBounds(gObj))
-                        window[gObj.Y + y, gObj.X + x] = gObj.Body[y, x];
+                        grid[gObj.Y + y, gObj.X + x] = gObj.Body[y, x];
                     else
                         return;
                 }
@@ -102,6 +103,10 @@ namespace ConsoleRPG
         public int Width
         {
             get => width;
+        }
+        public char[,] Grid
+        {
+            get => grid;
         }
 
         public Player Player
