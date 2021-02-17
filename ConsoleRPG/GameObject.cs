@@ -12,11 +12,12 @@ namespace ConsoleRPG
         private int y;
         private char[,] body;
         private  ConsoleColor color;
-        public GameObject(int _x, int _y, string _filePath)
+        Window screen;
+        public GameObject(int _x, int _y, Window _screen,  string _filePath)
         {
             x = _x;
             y = _y;
-
+            screen = _screen;
             LoadAsset(_filePath);
             color = ConsoleColor.Yellow;
         }
@@ -55,11 +56,11 @@ namespace ConsoleRPG
             Console.ResetColor();
         }
 
-        private bool Collsion(GameObject obj)
-        {
-            return X < (obj.X + obj.Width) && X + Width > obj.X &&
-                   Y < (obj.Y + obj.Height) && Y + Height > obj.Y;
-        }
+        //public bool Collision(GameObject obj)
+        //{
+        //    return X < (obj.X + obj.Width) && X + Width >= obj.X &&
+        //           Y < (obj.Y + obj.Height) && Y + Height >= obj.Y;
+        //}
 
         //public void Display()
         //{

@@ -9,30 +9,30 @@ namespace ConsoleRPG
         private ConsoleColor playerColor;
         private int windowHeight;
         private int windowWidth;
-        private Window window;
-        public Player(int _x, int _y, int _windowHeight, int _windowWidth, Window _window)
-            : base(_x, _y, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\Player.txt")
+        private Window screen;
+        public Player(int _x, int _y, int _windowHeight, int _windowWidth, Window _screen)
+            : base(_x, _y, _screen, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\Player.txt")
         {
             playerColor = ConsoleColor.Blue;
             windowHeight = _windowHeight;
             windowWidth = _windowWidth;
-            window = _window;
+            screen = _screen;
         }
 
-        public void Move()
+        public void Move(int distance)
         {
             ConsoleKeyInfo input;
 
             input = Console.ReadKey();
 
             if (input.Key == ConsoleKey.LeftArrow)
-                X += InBounds(-1, 0) ? -1 : 0;
+                X += InBounds(-1, 0) && IsWalkable(-1, 0)  ? -1 : 0;
             if (input.Key == ConsoleKey.RightArrow)
-                X += InBounds(1, 0) ? 1 : 0;
+                X += InBounds(1, 0) && IsWalkable(1, 0)  ? 1 : 0;
             if (input.Key == ConsoleKey.UpArrow)
-                Y += InBounds(0, -1) ? -1 : 0;
+                Y += InBounds(0, -1) && IsWalkable(0, -1) ? -1  : 0;
             if (input.Key == ConsoleKey.DownArrow)
-                Y += InBounds(0, 1)  ? 1 : 0;
+                Y += InBounds(0, 1) && IsWalkable(0, 1) ? 1 : 0;
         }
 
         public void Draw()
@@ -64,6 +64,14 @@ namespace ConsoleRPG
                 return X + xMove > 0;
 
             return false;
+        }
+
+        private bool IsWalkable(int xMove, int yMove)
+        {
+            return screen.Grid[Y + 1 + yMove, X + xMove] != '#' &&
+                   screen.Grid[Y + yMove, X + 2 + xMove] != '#' &&
+                   screen.Grid[Y + 1 + yMove, X + xMove] != '^' &&
+                   screen.Grid[Y + yMove, X + 2 + xMove] != '^';
         }
 
 
