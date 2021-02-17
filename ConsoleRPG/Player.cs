@@ -63,23 +63,16 @@ namespace ConsoleRPG
             else if (X + xMove < 0)
                 valid =  X + xMove < 0 ? false : true;
 
-            valid = window.Grid[Y + yMove, X + xMove + 2] == ' ' && window.Grid[Y + yMove + 1, X + xMove] == ' ' ? true : false;
-
+            valid = hasCollided(' ', xMove, yMove);
 
             return valid;
         }
 
-        private bool Collided(int xMove, int yMove)
+
+        private bool hasCollided(char obj, int xMove, int yMove)
         {
-            for (int i = Y; i < 2; i++)
-            {
-                for (int j = X; j < 3; j++)
-                {
-                    if (window.Grid[i + yMove, j + xMove] == '#')
-                        return true;
-                }
-            }
-            return false;
+            return window.Grid[Y + yMove, X + xMove + 2] == obj && window.Grid[Y + yMove + 1, X + xMove] == obj;
+           
         }
 
         public void DisplayPosition()
