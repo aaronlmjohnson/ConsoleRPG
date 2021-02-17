@@ -53,27 +53,19 @@ namespace ConsoleRPG
 
         private bool InBounds(int xMove, int yMove)
         {
-            bool valid;
-            if (yMove > 0)
-                valid =  Y + yMove >= windowHeight - 1 ? false : true;
-            else if (yMove < 0)
-                valid =  Y + yMove < 0 ? false : true;
-            else if (xMove > 0)
-                valid =  X + xMove >= windowWidth - 1 ? false : true;
-            else if (X + xMove < 0)
-                valid =  X + xMove < 0 ? false : true;
 
-            valid = hasCollided(' ', xMove, yMove);
+            if (yMove == 1)
+                return Y + yMove <= windowHeight - 1;
+            else if (yMove == -1)
+                return Y + yMove >= 0;
+            else if (xMove == 1)
+                return X + xMove <= windowWidth - 1;
+            else if (xMove == -1)
+                return X + xMove > 0;
 
-            return valid;
+            return false;
         }
 
-
-        private bool hasCollided(char obj, int xMove, int yMove)
-        {
-            return window.Grid[Y + yMove, X + xMove + 2] == obj && window.Grid[Y + yMove + 1, X + xMove] == obj;
-           
-        }
 
         public void DisplayPosition()
         {

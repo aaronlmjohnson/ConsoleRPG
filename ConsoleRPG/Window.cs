@@ -75,11 +75,14 @@ namespace ConsoleRPG
             while (true)
             {
                 DrawScene();
+
                 player.Move();
-                System.Threading.Thread.Sleep(20);
+
+                System.Threading.Thread.Sleep(5);
 
             }
-
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("Collision detected");
         }
 
         private bool InBounds(GameObject gObj)

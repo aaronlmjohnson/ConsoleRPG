@@ -16,6 +16,7 @@ namespace ConsoleRPG
         {
             x = _x;
             y = _y;
+
             LoadAsset(_filePath);
             color = ConsoleColor.Yellow;
         }
@@ -52,6 +53,12 @@ namespace ConsoleRPG
             }
 
             Console.ResetColor();
+        }
+
+        private bool Collsion(GameObject obj)
+        {
+            return X < (obj.X + obj.Width) && X + Width > obj.X &&
+                   Y < (obj.Y + obj.Height) && Y + Height > obj.Y;
         }
 
         //public void Display()
