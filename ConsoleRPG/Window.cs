@@ -7,8 +7,8 @@ namespace ConsoleRPG
     class Window
     {
         private char[,] grid;
-        private int height = 50;
-        private int width = 100;
+        private int height = 30;
+        private int width = 119;
         private Player player { get;  set; }
         private GameObject[] gObjs { get; set; }
         public Window()
@@ -30,17 +30,19 @@ namespace ConsoleRPG
 
         public void Display()
         {
-
+            string row = "";
             for (int i = 0; i < height; i++)
             {
-                string row = "";
+                
 
                 for (int j = 0; j < width; j++)
                 {
                     row += grid[i, j];
                 }
-                Console.WriteLine(row);
+                row += "\n";
+                
             }
+            Console.WriteLine(row);
         }
 
         public void DrawObject(GameObject gObj)
@@ -77,12 +79,12 @@ namespace ConsoleRPG
             Display();
             while (true)
             {
+
+                
                 player.Draw();
+                player.Move();
 
-
-                player.Move(1);
-
-                System.Threading.Thread.Sleep(5);
+                System.Threading.Thread.Sleep(20);
 
             }
 

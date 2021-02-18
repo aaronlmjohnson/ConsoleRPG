@@ -19,14 +19,14 @@ namespace ConsoleRPG
             screen = _screen;
             body = 'P';
             playerColor = ConsoleColor.Blue;
-            
-        }
- 
 
-        public void Move(int distance)
+        }
+
+
+        public void Move()
         {
             ConsoleKeyInfo input;
-
+            //TODO: right and down keys erase other entities don't know why???
             input = Console.ReadKey();
 
             if (input.Key == ConsoleKey.LeftArrow)
@@ -34,13 +34,13 @@ namespace ConsoleRPG
                 Erase();
                 x += InBounds(-1, 0) && IsWalkable(-1, 0) ? -1 : 0;
             }
-               
+
             if (input.Key == ConsoleKey.RightArrow)
             {
                 Erase();
                 x += InBounds(1, 0) && IsWalkable(1, 0) ? 1 : 0;
             }
-                
+
             if (input.Key == ConsoleKey.UpArrow)
             {
                 Erase();
@@ -51,7 +51,8 @@ namespace ConsoleRPG
                 Erase();
                 y += InBounds(0, 1) && IsWalkable(0, 1) ? 1 : 0;
             }
-                
+
+
         }
 
         public void Draw()
@@ -60,9 +61,9 @@ namespace ConsoleRPG
 
             Console.SetCursorPosition(x, y);
             Console.Write(body);
-
+            Console.SetCursorPosition(x, y);
             Console.ResetColor();
-            
+
         }
 
         private void Erase()
@@ -86,6 +87,13 @@ namespace ConsoleRPG
             return false;
         }
 
+        public void DisplayPosition()
+        {
+            Console.SetCursorPosition(screen.Width - 10, 0);
+            Console.Write($"X:{x},Y:{y}");
+
+        }
+
         private bool IsWalkable(int xMove, int yMove)
         {
 
@@ -95,6 +103,11 @@ namespace ConsoleRPG
             //       screen.Grid[Y + yMove, X + 2 + xMove] != '#' &&
             //       screen.Grid[Y + 1 + yMove, X + xMove] != '^' &&
             //       screen.Grid[Y + yMove, X + 2 + xMove] != '^';
+        }
+
+        public int X
+        {
+            get => x;
         }
 
     }
