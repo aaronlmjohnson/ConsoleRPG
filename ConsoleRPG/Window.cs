@@ -30,6 +30,7 @@ namespace ConsoleRPG
 
         public void Display()
         {
+
             for (int i = 0; i < height; i++)
             {
                 string row = "";
@@ -59,7 +60,7 @@ namespace ConsoleRPG
 
         public void DrawScene()
         {
-            Console.Clear();
+            
             Display();
             
 
@@ -72,9 +73,11 @@ namespace ConsoleRPG
             {
                 DrawObject(gObj);
             }
+
+            Display();
             while (true)
             {
-                DrawScene();
+                player.Draw();
 
 
                 player.Move(1);
