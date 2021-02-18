@@ -26,7 +26,6 @@ namespace ConsoleRPG
         public void Move()
         {
             ConsoleKeyInfo input;
-            //TODO: right and down keys erase other entities don't know why???
             input = Console.ReadKey();
 
             if (input.Key == ConsoleKey.LeftArrow)
@@ -87,28 +86,11 @@ namespace ConsoleRPG
             return false;
         }
 
-        public void DisplayPosition()
-        {
-            Console.SetCursorPosition(screen.Width - 10, 0);
-            Console.Write($"X:{x},Y:{y}");
-
-        }
-
         private bool IsWalkable(int xMove, int yMove)
         {
 
             return screen.Grid[y + yMove, x + xMove] != '#' &&
                    screen.Grid[y + yMove, x + xMove] != '^';
-            //return screen.Grid[y + 1 + yMove, x + xMove] != '#' &&
-            //       screen.Grid[Y + yMove, X + 2 + xMove] != '#' &&
-            //       screen.Grid[Y + 1 + yMove, X + xMove] != '^' &&
-            //       screen.Grid[Y + yMove, X + 2 + xMove] != '^';
         }
-
-        public int X
-        {
-            get => x;
-        }
-
     }
 }

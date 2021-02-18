@@ -62,31 +62,12 @@ namespace ConsoleRPG
 
         public void DrawScene()
         {
-            
-            Display();
-            
-
-            player.Draw();
-        }
-
-        public void Update()
-        {
             foreach (GameObject gObj in gObjs)
-            {
                 DrawObject(gObj);
-            }
+            player.Draw();
 
             Display();
-            while (true)
-            {
 
-                
-                player.Draw();
-                player.Move();
-
-                System.Threading.Thread.Sleep(20);
-
-            }
 
         }
 
