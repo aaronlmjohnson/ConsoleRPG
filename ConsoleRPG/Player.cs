@@ -27,35 +27,26 @@ namespace ConsoleRPG
         {
             ConsoleKeyInfo input;
             input = Console.ReadKey();
-            
+            if(input != null)
+                Erase();
+
+            int orgX = x;
+            int orgY = y;
+ 
             if (input.Key == ConsoleKey.LeftArrow)
-            {
-                Erase();
-                x += InBounds(-1, 0) && IsWalkable(-1, 0) ? -1 : 0;
-            }
-
+                x -= 1;
             if (input.Key == ConsoleKey.RightArrow)
-            {
-                Erase();
-                x += InBounds(1, 0) && IsWalkable(1, 0) ? 1 : 0;
-            }
-
+                x += 1;
             if (input.Key == ConsoleKey.UpArrow)
-            {
-                Erase();
-                y += InBounds(0, -1) && IsWalkable(0, -1) ? -1 : 0;
-            }
+                y -= 1;
             if (input.Key == ConsoleKey.DownArrow)
+                y += 1;
+
+            if (!InBounds() || !Walkable())
             {
-                Erase();
-                y += InBounds(0, 1) && IsWalkable(0, 1) ? 1 : 0;
+                x = orgX;
+                y = orgY;
             }
-
-            //try to move character
-            //check if inbounds
-            // if not set X/Y back to original value;
-
-
         }
 
         public void Draw()
@@ -75,26 +66,16 @@ namespace ConsoleRPG
             Console.Write(' ');
         }
 
-        private bool InBounds(int xMove, int yMove)
+        private bool InBounds()
         {
-
-            if (yMove == 1)
-                return y + yMove <= screen.Height - 1;
-            else if (yMove == -1)
-                return y + yMove >= 0;
-            else if (xMove == 1)
-                return x + xMove <= screen.Width - 1;
-            else if (xMove == -1)
-                return x + xMove > 0;
-
-            return false;
+            return y <= screen.Height - 1 && y >= 0 &&
+                   x <= screen.Width - 1 && x >= 0;
         }
 
-        private bool IsWalkable(int xMove, int yMove)
+        private bool Walkable()
         {
 
-            return screen.Grid[y + yMove, x + xMove] != '#' &&
-                   screen.Grid[y + yMove, x + xMove] != '^';
+            return screen.Grid[y, x] != '#' && screen.Grid[y, x] != '^';
         }
 
         public bool EnteredDoor()
