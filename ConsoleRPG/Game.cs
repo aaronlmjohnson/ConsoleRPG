@@ -18,8 +18,8 @@ namespace ConsoleRPG
             screen = new Window();
             player = new Player(0, 0, screen);
             screen.Player = player;
-            GameObject shop = new GameObject(20, 0, screen, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\shop.txt");
-            GameObject house = new GameObject(0, 10, screen, @"C:\Users\Aaron\Desktop\c# projects\ConsoleRPG\assets\house.txt");
+            GameObject shop = new GameObject(20, 0, screen, @".\assets\shop.txt");
+            GameObject house = new GameObject(0, 10, screen, @".\assets\house.txt");
             gObjs[0] = shop;
             gObjs[1] = house;
             screen.GObjs = gObjs;
@@ -31,6 +31,10 @@ namespace ConsoleRPG
             {
                 player.Draw();
                 player.Move();
+                if (player.EnteredDoor())
+                {
+                    break;
+                }
                 //System.Threading.Thread.Sleep(20);
             }
         }

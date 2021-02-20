@@ -9,6 +9,7 @@ namespace ConsoleRPG
         {
             Game consoleRPG = new Game();
             consoleRPG.Start();
+            //Console.Write(Environment.CurrentDirectory);
         }
     }
 }

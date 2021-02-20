@@ -27,7 +27,7 @@ namespace ConsoleRPG
         {
             ConsoleKeyInfo input;
             input = Console.ReadKey();
-
+            
             if (input.Key == ConsoleKey.LeftArrow)
             {
                 Erase();
@@ -50,6 +50,10 @@ namespace ConsoleRPG
                 Erase();
                 y += InBounds(0, 1) && IsWalkable(0, 1) ? 1 : 0;
             }
+
+            //try to move character
+            //check if inbounds
+            // if not set X/Y back to original value;
 
 
         }
@@ -91,6 +95,11 @@ namespace ConsoleRPG
 
             return screen.Grid[y + yMove, x + xMove] != '#' &&
                    screen.Grid[y + yMove, x + xMove] != '^';
+        }
+
+        public bool EnteredDoor()
+        {
+            return screen.Grid[y, x] == 'D';
         }
     }
 }
