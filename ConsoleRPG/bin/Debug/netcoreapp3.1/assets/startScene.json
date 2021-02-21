@@ -1,0 +1,22 @@
+{
+  "PlayerStart": {
+    "x": 10,
+    "y": 10
+  },
+  "Buildings": {
+    "shop": {
+      "position": {
+        "x": 20,
+        "y": 10
+      },
+     "path": "./assets/shop.txt"
+    },
+    "bob's house": {
+      "position": {
+        "x": 30,
+        "y": 15
+      },
+     "path": "./assets/house.txt"
+    }
+  }
+}
