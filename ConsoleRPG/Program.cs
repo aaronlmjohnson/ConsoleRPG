@@ -15,7 +15,6 @@ namespace ConsoleRPG
             string fileName = @".\assets\startScene.json";
             string startJson = System.IO.File.ReadAllText(fileName);
             var scene = JsonSerializer.Deserialize<SceneData>(startJson);
-            Console.Write(scene.PlayerStart);
             //IDictionary<string, int> playerStart = new Dictionary<string, int>();
 
             //playerStart.Add("x", 10);

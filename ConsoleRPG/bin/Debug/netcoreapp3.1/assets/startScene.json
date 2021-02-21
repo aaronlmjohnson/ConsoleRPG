@@ -1,22 +1,24 @@
 {
   "PlayerStart": {
-    "x": 10,
-    "y": 10
+    "X": 10,
+    "Y": 10
   },
-  "Buildings": {
-    "shop": {
-      "position": {
-        "x": 20,
-        "y": 10
+  "Buildings": [
+    {
+      "Name": "shop",
+      "Position": {
+        "X": 20,
+        "Y": 10
       },
-     "path": "./assets/shop.txt"
+      "Path": "./assets/shop.txt"
     },
-    "bob's house": {
-      "position": {
-        "x": 30,
-        "y": 15
+    {
+      "Name": "bob's house",
+      "Position": {
+        "X": 30,
+        "Y": 15
       },
-     "path": "./assets/house.txt"
+      "Path": "./assets/house.txt"
     }
-  }
+  ]
 }
