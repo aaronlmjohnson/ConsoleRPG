@@ -9,6 +9,7 @@ namespace ConsoleRPG
         private Window screen;
         private Player player;
         private GameObject[] gObjs = new GameObject[2];
+   
         public Game()
         {
 
@@ -17,16 +18,29 @@ namespace ConsoleRPG
         {
             screen = new Window();
             player = new Player(0, 0, screen);
-            screen.Player = player;
-            GameObject shop = new GameObject(20, 0, screen, @".\assets\shop.txt");
+
+            Building shop = new Building(20, 0, screen, @".\assets\shop.txt", ConsoleColor.Yellow);
             GameObject house = new GameObject(0, 10, screen, @".\assets\house.txt");
             gObjs[0] = shop;
-            gObjs[1] = house;
-            screen.GObjs = gObjs;
+            //gObjs[1] = house;
+            //screen.GObjs = gObjs;
+            //screen.Add(gObjs[0]);
+            //screen.Add(gObjs[1]);
+          
+            screen.Add(gObjs[0]);
         }
         public void Update()
         {
-            screen.DrawScene();
+            //create scene objects
+            //add objects to grid
+            // draw objects
+            // draw player
+
+            //screen.DrawScene();
+            gObjs[0].Draw();
+            //gObjs[1].Draw();
+
+
             while (true)
             {
                 player.Draw();

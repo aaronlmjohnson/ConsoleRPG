@@ -6,9 +6,15 @@ namespace ConsoleRPG
 {
     class SceneData
     {
+        public String Name { get; set; }
+
+        public int Width { get; set; }
+
+        public int Height { get; set; }
         public IDictionary<string, int> PlayerStart { get; set; }
         public BuildingData[] Buildings { get; set; }
 
 
+        //TODO: add connected scenes such as left: hub, right: forest_2 , up: forest_4, down: mountain_1
     }
 }

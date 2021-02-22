@@ -8,7 +8,7 @@ namespace ConsoleRPG
     {
         private ConsoleColor playerColor;
         private Window screen;
-        private char body;
+        public char body { get; set; }
         private int x;
         private int y;
 

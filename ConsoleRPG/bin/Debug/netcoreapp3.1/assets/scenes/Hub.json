@@ -1,4 +1,7 @@
 {
+  "Name": "Hub",
+  "Width": 119,
+  "Height": 30,
   "PlayerStart": {
     "X": 10,
     "Y": 10

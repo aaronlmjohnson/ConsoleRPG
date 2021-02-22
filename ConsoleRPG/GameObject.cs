@@ -6,11 +6,11 @@ namespace ConsoleRPG
 {
     class GameObject
     {
-        private int width;
-        private int height;
+        protected int width;
+        protected int height;
         private int x;
         private int y;
-        private char[,] body;
+        protected char[,] body;
 
         Window screen;
         public GameObject(int _x, int _y, Window _screen,  string _filePath)
@@ -37,6 +37,21 @@ namespace ConsoleRPG
                     body[i, j] = assetInfo[i][j];
                 }
             }
+        }
+
+        public virtual void Draw()
+        {
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    Console.SetCursorPosition(x + X, y + Y);
+                    Console.Write(body[y,x]);
+                    
+                }
+            }
+
         }
 
         public int Width
