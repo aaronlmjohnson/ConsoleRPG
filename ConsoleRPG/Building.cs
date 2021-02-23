@@ -6,31 +6,37 @@ namespace ConsoleRPG
 {
     class Building : GameObject
     {
-        private ConsoleColor bodyColor;
-        public Building(int _x, int _y, Window _screen, string _filePath, ConsoleColor _bodyColor)
+        private ConsoleColor[] colorPalette; //0: Roof 1: body 2: other
+        public Building(int _x, int _y, Window _screen, string _filePath, ConsoleColor[] _colorPalette)
             : base(_x, _y, _screen, _filePath)
         {
-            bodyColor = _bodyColor;
+            colorPalette = _colorPalette;
         }
 
          public override void Draw()
         {
             for (int y = 0; y < height; y++)
             {
-                
                 for (int x = 0; x < width; x++)
                 {
-                    
                     Console.SetCursorPosition(x + X, y + Y);
-                    if (body[y, x] == '#')
-                        Console.ForegroundColor = bodyColor;
+                    ColorMaterial(x, y, '^', colorPalette[0]);
+                    ColorMaterial(x, y, '#', colorPalette[1]);
+                    ColorMaterial(x, y, 'D', colorPalette[2]);
+
                     Console.Write(body[y, x]);
                     Console.ResetColor();
                 }
-                
             }
             
 
         }
+
+        private void ColorMaterial(int x, int y, char material, ConsoleColor color)
+        {
+            if (body[y, x] == material)
+                Console.ForegroundColor = color;
+        }
+
     }
 }
