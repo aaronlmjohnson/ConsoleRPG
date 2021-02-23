@@ -13,7 +13,12 @@
         "X": 20,
         "Y": 10
       },
-      "Path": "./assets/shop.txt"
+      "Path": "./assets/shop.txt",
+      "ColorPalette": [
+        "Red",
+        "Magenta",
+        "DarkBlue"
+       ]
     },
     {
       "Name": "bob's house",
@@ -21,7 +26,12 @@
         "X": 30,
         "Y": 15
       },
-      "Path": "./assets/house.txt"
+      "Path": "./assets/house.txt",
+      "ColorPalette": [
+        "DarkYellow",
+        "Green",
+        "DarkBlue"
+       ]
     }
   ]
 }

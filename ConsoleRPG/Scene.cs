@@ -37,18 +37,14 @@ namespace ConsoleRPG
 
         public void CreateBuildings()
         {
+
             
-      //"ColorPalette": {
-      //          ConsoleColor.DarkYellow,
-      //      ConsoleColor.Green,
-      //      ConsoleColor.DarkBlue
-      //}
             for (int i = 0; i < buildings.Length; i++)
             {
                 //BuildingData[]  = Data.Buildings;
                 BuildingData building = Data.Buildings[i];
-                ConsoleColor[] colorPalette = new ConsoleColor[] { ConsoleColor.DarkYellow, ConsoleColor.Green, ConsoleColor.DarkBlue };
-                //ConsoleColor[] colorPalette = building.ColorPalette;
+                //ConsoleColor[] colorPalette = new ConsoleColor[] { ConsoleColor.DarkYellow, ConsoleColor.Green, ConsoleColor.DarkBlue };
+                string[] colorPalette = building.ColorPalette;
                 buildings[i] = new Building(building.Position["X"], building.Position["Y"], screen, building.Path, colorPalette);
             }
 
