@@ -13,5 +13,7 @@ namespace ConsoleRPG
         public IDictionary<string, int> Position { get; set; }
         public string Path { get; set; }
 
+        public ConsoleColor[] ColorPalette { get; set; }
+
     }
 }

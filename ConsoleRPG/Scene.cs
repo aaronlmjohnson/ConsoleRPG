@@ -10,32 +10,50 @@ namespace ConsoleRPG
         public SceneData Data { get; set; }
 
         private Player player;
-
-        public Scene(string _path, Player _player)
+        private Window screen;
+        private Building[] buildings;
+        public Scene(string _path, Window _screen, Player _player)
         {
             string jsonData = System.IO.File.ReadAllText(_path);
             Data = JsonSerializer.Deserialize<SceneData>(jsonData);
             player = _player;
+            buildings = new Building[Data.Buildings.Length];
+            screen = _screen;
+            
         }
 
-        public string Create()
+        public void Create()
         {
-            string sceneStr = "";
-            for(int y = 0; y < Data.Height; y++) { 
-                for(int x = 0; x < Data.Width; x++)
-                {
-                    if(x == Data.PlayerStart["X"] && y == Data.PlayerStart["Y"])
-                    {
-                        sceneStr += player.body;
-                    }
-                    else
-                    {
-                        sceneStr += ' ';
-                    }
-                }
-                sceneStr += "\n";
+            player.SetPosition(Data.PlayerStart["X"], Data.PlayerStart["Y"]);
+            player.Draw();
+            CreateBuildings();
+            foreach(Building building in buildings)
+            {
+                screen.Add(building);
+                building.Draw();
             }
-            return sceneStr;
+                
+        }
+
+        public void CreateBuildings()
+        {
+            
+      //"ColorPalette": {
+      //          ConsoleColor.DarkYellow,
+      //      ConsoleColor.Green,
+      //      ConsoleColor.DarkBlue
+      //}
+            for (int i = 0; i < buildings.Length; i++)
+            {
+                //BuildingData[]  = Data.Buildings;
+                BuildingData building = Data.Buildings[i];
+                ConsoleColor[] colorPalette = new ConsoleColor[] { ConsoleColor.DarkYellow, ConsoleColor.Green, ConsoleColor.DarkBlue };
+                //ConsoleColor[] colorPalette = building.ColorPalette;
+                buildings[i] = new Building(building.Position["X"], building.Position["Y"], screen, building.Path, colorPalette);
+            }
+
+          //  GameObject[] _objs = ;
+           // return _objs;
         }
     }
 }

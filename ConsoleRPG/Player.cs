@@ -82,5 +82,11 @@ namespace ConsoleRPG
         {
             return screen.Grid[y, x] == 'D';
         }
+
+        public void SetPosition(int _x, int _y)
+        {
+            x = _x;
+            y = _y;
+        }
     }
 }

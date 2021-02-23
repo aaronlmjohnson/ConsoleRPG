@@ -8,8 +8,7 @@ namespace ConsoleRPG
     {
         private Window screen;
         private Player player;
-        private GameObject[] gObjs = new GameObject[2];
-   
+        private Scene Hub;
         public Game()
         {
 
@@ -19,29 +18,11 @@ namespace ConsoleRPG
             screen = new Window();
             player = new Player(0, 0, screen);
 
-            Building shop = new Building(20, 0, screen, @".\assets\shop.txt", new ConsoleColor[] { ConsoleColor.DarkYellow, ConsoleColor.Cyan, ConsoleColor.Magenta });
-            GameObject house = new Building(0, 10, screen, @".\assets\house.txt", new ConsoleColor[] { ConsoleColor.DarkYellow, ConsoleColor.Green, ConsoleColor.DarkBlue });
-            gObjs[0] = shop;
-            gObjs[1] = house;
-            //screen.GObjs = gObjs;
-            //screen.Add(gObjs[0]);
-            //screen.Add(gObjs[1]);
-          
-            screen.Add(gObjs[0]);
-            screen.Add(gObjs[1]);
+            Hub = new Scene("./assets/scenes/Hub.json", screen, player);
+            Hub.Create();
         }
         public void Update()
         {
-            //create scene objects
-            //add objects to grid
-            // draw objects
-            // draw player
-
-            //screen.DrawScene();
-            gObjs[0].Draw();
-            gObjs[1].Draw();
-
-
             while (true)
             {
                 player.Draw();

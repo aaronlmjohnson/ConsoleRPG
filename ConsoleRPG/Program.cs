@@ -11,9 +11,6 @@ namespace ConsoleRPG
         {
             Game consoleRPG = new Game();
             consoleRPG.Start();
-
-            
-
         }
     }
 }
