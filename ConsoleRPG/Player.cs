@@ -75,7 +75,7 @@ namespace ConsoleRPG
         private bool Walkable()
         {
 
-            return screen.Grid[y, x] != '#' && screen.Grid[y, x] != '^';
+            return screen.Grid[y, x] == ' ';
         }
 
         public bool EnteredDoor()

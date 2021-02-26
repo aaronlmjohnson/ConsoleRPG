@@ -58,6 +58,7 @@ namespace ConsoleRPG
                 for(int x = 0; x < screen.Width; x++)
                 {
                     background[y, x] = backgroundData[y][x];
+                    screen.Grid[y, x] = background[y, x];
                 }
             }
         }
@@ -68,11 +69,34 @@ namespace ConsoleRPG
             {
                 for(int x = 0; x < background.GetLength(1); x++)
                 {
+                    Console.ForegroundColor = SelectColor(background[y, x]);
                     Console.SetCursorPosition(x, y);
                     Console.Write(background[y, x]);
                     Console.ResetColor();
                 }
             }
+        }
+
+        public ConsoleColor SelectColor(char cell)
+        {
+            ConsoleColor color;
+            switch (cell)
+            {
+                case 'E':
+                    color = ConsoleColor.DarkRed;
+                    break;
+                case '^':
+                    color = ConsoleColor.Green;
+                    break;
+                case '▄':
+                    color = ConsoleColor.DarkYellow;
+                    break;
+                default:
+                    color = ConsoleColor.White;
+                    break;
+                    
+            }
+            return color;
         }
     }
 }

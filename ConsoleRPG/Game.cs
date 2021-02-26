@@ -18,7 +18,7 @@ namespace ConsoleRPG
             screen = new Window();
             player = new Player(0, 0, screen);
 
-            Hub = new Scene("./assets/scenes/Hub.json", screen, player);
+            Hub = new Scene("./assets/scenes/Forest1.json", screen, player);
             Hub.Create();
             
         }
