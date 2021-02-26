@@ -1,7 +1,8 @@
 {
   "Name": "Hub",
-  "Width": 119,
+  "Width": 70,
   "Height": 30,
+  "Background": "./assets/backgrounds/border_template.txt",
   "PlayerStart": {
     "X": 10,
     "Y": 10

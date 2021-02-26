@@ -20,6 +20,7 @@ namespace ConsoleRPG
 
             Hub = new Scene("./assets/scenes/Hub.json", screen, player);
             Hub.Create();
+            
         }
         public void Update()
         {

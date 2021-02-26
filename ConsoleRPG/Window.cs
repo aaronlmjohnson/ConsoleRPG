@@ -8,7 +8,7 @@ namespace ConsoleRPG
     {
         private char[,] grid;
         private int height = 30;
-        private int width = 119;
+        private int width = 70;
 
         public Window()
         {

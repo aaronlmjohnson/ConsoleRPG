@@ -12,6 +12,7 @@ namespace ConsoleRPG
         private Player player;
         private Window screen;
         private Building[] buildings;
+        private char[,] background;
         public Scene(string _path, Window _screen, Player _player)
         {
             string jsonData = System.IO.File.ReadAllText(_path);
@@ -25,8 +26,11 @@ namespace ConsoleRPG
         public void Create()
         {
             player.SetPosition(Data.PlayerStart["X"], Data.PlayerStart["Y"]);
+            LoadBackground();
+            DrawBackground();
             player.Draw();
             CreateBuildings();
+
             foreach(Building building in buildings)
             {
                 screen.Add(building);
@@ -37,19 +41,38 @@ namespace ConsoleRPG
 
         public void CreateBuildings()
         {
-
-            
             for (int i = 0; i < buildings.Length; i++)
             {
-                //BuildingData[]  = Data.Buildings;
                 BuildingData building = Data.Buildings[i];
-                //ConsoleColor[] colorPalette = new ConsoleColor[] { ConsoleColor.DarkYellow, ConsoleColor.Green, ConsoleColor.DarkBlue };
                 string[] colorPalette = building.ColorPalette;
                 buildings[i] = new Building(building.Position["X"], building.Position["Y"], screen, building.Path, colorPalette);
             }
+        }
 
-          //  GameObject[] _objs = ;
-           // return _objs;
+        public void LoadBackground()
+        {
+            string[] backgroundData = System.IO.File.ReadAllLines(Data.Background);
+            background = new char[screen.Height, screen.Width];
+            for(int y = 0; y < screen.Height; y++)
+            {
+                for(int x = 0; x < screen.Width; x++)
+                {
+                    background[y, x] = backgroundData[y][x];
+                }
+            }
+        }
+
+        public void DrawBackground()
+        {
+            for (int y = 0; y < background.GetLength(0); y++)
+            {
+                for(int x = 0; x < background.GetLength(1); x++)
+                {
+                    Console.SetCursorPosition(x, y);
+                    Console.Write(background[y, x]);
+                    Console.ResetColor();
+                }
+            }
         }
     }
 }
