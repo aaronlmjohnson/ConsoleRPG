@@ -45,7 +45,9 @@ namespace ConsoleRPG
             {
                 BuildingData building = Data.Buildings[i];
                 string[] colorPalette = building.ColorPalette;
-                buildings[i] = new Building(building.Position["X"], building.Position["Y"], screen, building.Path, colorPalette);
+                int eX = building.Entrance["X"];
+                int eY = building.Entrance["Y"];
+                buildings[i] = new Building(building.Position["X"], building.Position["Y"], screen, building.Path, colorPalette, eX, eY, building.Name);
             }
         }
 
@@ -97,6 +99,11 @@ namespace ConsoleRPG
                     
             }
             return color;
+        }
+
+        public Building[] Buildings
+        {
+            get => buildings;
         }
     }
 }

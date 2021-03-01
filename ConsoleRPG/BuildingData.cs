@@ -15,6 +15,7 @@ namespace ConsoleRPG
 
         public string[] ColorPalette { get; set; }
 
+        public IDictionary<string, int> Entrance { get; set; }
 
 
     }

@@ -18,21 +18,16 @@ namespace ConsoleRPG
             screen = new Window();
             player = new Player(0, 0, screen);
 
-            Hub = new Scene("./assets/scenes/Forest1.json", screen, player);
+            Hub = new Scene("./assets/scenes/Hub.json", screen, player);
             Hub.Create();
             
         }
         public void Update()
         {
+            Scene currentScene = Hub;
             while (true)
             {
-                player.Draw();
-                player.Move();
-                if (player.EnteredDoor())
-                {
-                    break;
-                }
-                //System.Threading.Thread.Sleep(20);
+                player.Update(currentScene);
             }
         }
 

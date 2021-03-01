@@ -19,7 +19,11 @@
         "Red",
         "Magenta",
         "DarkBlue"
-       ]
+       ],
+       "Entrance": {
+          "X": 24,
+          "Y":13
+       }
     },
     {
       "Name": "bob's house",
@@ -32,7 +36,11 @@
         "DarkYellow",
         "Green",
         "DarkBlue"
-       ]
+       ],
+       "Entrance": {
+          "X": 32,
+          "Y":20
+       }
     }
   ]
 }

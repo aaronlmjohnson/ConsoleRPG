@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\ConsoleRPG",
-    "\\ConsoleRPG\\bin",
-    "\\ConsoleRPG\\bin\\Debug",
-    "\\ConsoleRPG\\bin\\Debug\\netcoreapp3.1",
-    "\\ConsoleRPG\\bin\\Debug\\netcoreapp3.1\\assets"
+    ""
   ],
-  "SelectedNode": "\\ConsoleRPG\\ConsoleRPG.csproj",
+  "SelectedNode": "\\ConsoleRPG.sln",
   "PreviewInSolutionExplorer": false
 }

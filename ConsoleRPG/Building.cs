@@ -7,10 +7,16 @@ namespace ConsoleRPG
     class Building : GameObject
     {
         private string[] colorPalette; //0: Roof 1: body 2: other
-        public Building(int _x, int _y, Window _screen, string _filePath, string[] _colorPalette)
+        private int entranceX;
+        private int entranceY;
+        private string name;
+        public Building(int _x, int _y, Window _screen, string _filePath, string[] _colorPalette, int _entranceX, int _entranceY, string _name)
             : base(_x, _y, _screen, _filePath)
         {
             colorPalette = _colorPalette;
+            entranceX = _entranceX;
+            entranceY = _entranceY;
+            name = _name;
         }
 
          public override void Draw()
@@ -38,5 +44,19 @@ namespace ConsoleRPG
                 Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), color, true);
         }
 
+        public int EntranceX
+        {
+            get => entranceX;
+        }
+
+        public int EntranceY
+        {
+            get => entranceY;
+        }
+
+        public string Name
+        {
+            get => name;
+        }
     }
 }

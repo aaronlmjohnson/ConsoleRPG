@@ -74,8 +74,9 @@ namespace ConsoleRPG
 
         private bool Walkable()
         {
-
-            return screen.Grid[y, x] == ' ';
+            return screen.Grid[y, x] == ' ' || 
+                   screen.Grid[y, x] == 'D' ||
+                   screen.Grid[y, x] == 'E';
         }
 
         public bool EnteredDoor()
@@ -83,10 +84,50 @@ namespace ConsoleRPG
             return screen.Grid[y, x] == 'D';
         }
 
+        public bool ExitedScene()
+        {
+            return screen.Grid[y, x] == 'E';
+        }
+
         public void SetPosition(int _x, int _y)
         {
             x = _x;
             y = _y;
+        }
+        public int Update(Scene scene)
+        {
+            Draw();
+            Move();
+
+            Walkable();
+            if (EnteredDoor())
+            {
+                for(int i = 0; i < scene.Buildings.Length; i++)
+                {
+                    if (scene.Buildings[i].EntranceX == x && scene.Buildings[i].EntranceY == y)
+                        DisplayHudMessage($"Entered {scene.Buildings[i].Name}");
+                        
+                }
+            }
+            //if (ExitedScene())
+            //{
+            //    Console.SetCursorPosition(71, 0);
+            //    Console.Write("exited scene");
+            //}
+
+            return 1;
+                
+        }
+        private void EnteredBuilding()
+        {
+
+        }
+        public void DisplayHudMessage(string message)
+        {
+            string _x = x.ToString();
+            Console.SetCursorPosition(71, 0);
+            Console.Write("                              ");
+            Console.Write(message);
         }
     }
 }

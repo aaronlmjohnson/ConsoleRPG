@@ -7,7 +7,7 @@ namespace ConsoleRPG
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Game consoleRPG = new Game();
             consoleRPG.Start();
