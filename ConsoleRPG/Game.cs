@@ -8,7 +8,7 @@ namespace ConsoleRPG
     {
         private Window screen;
         private Player player;
-        private Scene Hub;
+        private Scene currentScene;
         public Game()
         {
 
@@ -18,16 +18,27 @@ namespace ConsoleRPG
             screen = new Window();
             player = new Player(0, 0, screen);
 
-            Hub = new Scene("./assets/scenes/Hub.json", screen, player);
-            Hub.Create();
+            currentScene = new Scene("./assets/scenes/Hub.json", screen, player);
+            currentScene.Create();
             
         }
         public void Update()
         {
-            Scene currentScene = Hub;
             while (true)
             {
-                player.Update(currentScene);
+                player.Draw();
+                player.Move();
+
+                if (player.EnteredDoor())
+                {
+                    for (int i = 0; i < currentScene.Buildings.Length; i++)
+                    {
+                        if (currentScene.Buildings[i].EntranceX == player.X &&
+                            currentScene.Buildings[i].EntranceY == player.Y)
+                            player.DisplayHudMessage($"Entered {currentScene.Buildings[i].Name}");
+
+                    }
+                }
             }
         }
 
@@ -36,5 +47,12 @@ namespace ConsoleRPG
             Create();
             Update();
         }
+
+        private void changeScene(Scene scene)
+        {
+
+        }
+
+       
     }
 }

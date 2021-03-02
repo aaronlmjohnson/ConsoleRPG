@@ -11,7 +11,8 @@ namespace ConsoleRPG
         public char body { get; set; }
         private int x;
         private int y;
-
+        public int X { get => x; }
+        public int Y { get => y; }
         public Player(int _x, int _y, Window _screen)
         {
             x = _x;
@@ -94,30 +95,7 @@ namespace ConsoleRPG
             x = _x;
             y = _y;
         }
-        public int Update(Scene scene)
-        {
-            Draw();
-            Move();
 
-            Walkable();
-            if (EnteredDoor())
-            {
-                for(int i = 0; i < scene.Buildings.Length; i++)
-                {
-                    if (scene.Buildings[i].EntranceX == x && scene.Buildings[i].EntranceY == y)
-                        DisplayHudMessage($"Entered {scene.Buildings[i].Name}");
-                        
-                }
-            }
-            //if (ExitedScene())
-            //{
-            //    Console.SetCursorPosition(71, 0);
-            //    Console.Write("exited scene");
-            //}
-
-            return 1;
-                
-        }
         private void EnteredBuilding()
         {
 
@@ -127,6 +105,7 @@ namespace ConsoleRPG
             string _x = x.ToString();
             Console.SetCursorPosition(71, 0);
             Console.Write("                              ");
+            Console.SetCursorPosition(71, 0);
             Console.Write(message);
         }
     }
