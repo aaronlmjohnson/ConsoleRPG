@@ -21,7 +21,7 @@ namespace ConsoleRPG
             LoadAsset(_filePath);
         }
 
-        private void LoadAsset(string filePath)
+        protected void LoadAsset(string filePath)
         {
             string[] assetInfo;
             assetInfo = System.IO.File.ReadAllLines(filePath);

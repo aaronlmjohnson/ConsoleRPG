@@ -47,7 +47,7 @@ namespace ConsoleRPG
                 string[] colorPalette = building.ColorPalette;
                 int eX = building.Entrance["X"];
                 int eY = building.Entrance["Y"];
-                buildings[i] = new Building(building.Position["X"], building.Position["Y"], screen, building.Path, colorPalette, eX, eY, building.Name);
+                buildings[i] = new Building(building, screen, building.Path);
             }
         }
 

@@ -50,7 +50,7 @@ namespace ConsoleRPG
 
         private void changeScene(Scene scene)
         {
-
+            currentScene = scene;
         }
 
        

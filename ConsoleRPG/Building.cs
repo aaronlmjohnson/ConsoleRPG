@@ -10,13 +10,17 @@ namespace ConsoleRPG
         private int entranceX;
         private int entranceY;
         private string name;
-        public Building(int _x, int _y, Window _screen, string _filePath, string[] _colorPalette, int _entranceX, int _entranceY, string _name)
+        private BuildingData data; 
+        public Building(BuildingData _data, Window _screen, string _filePath = " ", int _x = 0, int _y = 0)
             : base(_x, _y, _screen, _filePath)
         {
-            colorPalette = _colorPalette;
-            entranceX = _entranceX;
-            entranceY = _entranceY;
-            name = _name;
+            data = _data;
+            colorPalette = data.ColorPalette;
+            X = data.Position["X"];
+            Y = data.Position["Y"];
+            entranceX = data.Entrance["X"];
+            entranceY = data.Entrance["Y"];
+            name = data.Name;
         }
 
          public override void Draw()
