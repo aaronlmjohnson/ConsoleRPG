@@ -29,6 +29,17 @@ namespace ConsoleRPG
             }
         }
 
+        public void Clear()
+        {
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    grid[y, x] = ' ';
+                }
+            }
+        }
+
         private bool InBounds(GameObject gObj)
         {
             if (gObj.X < 0 || gObj.Y < 0)

@@ -19,7 +19,12 @@
         "Green",
         "DarkYellow",
         "Green"
-       ]
+       ],
+       "Entrance": {
+          "X": 35,
+          "Y":15
+       },
+       "ScenePath":"./assets/scenes/ForestHut.json"
     }
   ]
 }

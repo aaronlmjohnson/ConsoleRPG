@@ -23,7 +23,8 @@
        "Entrance": {
           "X": 24,
           "Y":13
-       }
+       },
+       "ScenePath":"./assets/scenes/Forest1.json"
     },
     {
       "Name": "bob's house",
@@ -40,7 +41,8 @@
        "Entrance": {
           "X": 32,
           "Y":20
-       }
+       },
+       "ScenePath":"./assets/scenes/House.json"
     }
   ]
 }

@@ -48,6 +48,7 @@ namespace ConsoleRPG
                 x = orgX;
                 y = orgY;
             }
+            DisplayHudMessage($"X:{x},Y:{y}");
         }
 
         public void Draw()
@@ -96,10 +97,6 @@ namespace ConsoleRPG
             y = _y;
         }
 
-        private void EnteredBuilding()
-        {
-
-        }
         public void DisplayHudMessage(string message)
         {
             string _x = x.ToString();

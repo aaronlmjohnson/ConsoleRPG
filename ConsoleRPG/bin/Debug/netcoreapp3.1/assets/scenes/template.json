@@ -1,0 +1,28 @@
+{
+  "Name": "",
+  "Width": 1,
+  "Height": 1,
+  "Background": "",
+  "PlayerStart": {
+    "X": 10,
+    "Y": 10
+  },
+  "Buildings": [
+    {
+      "Name": "",
+      "Position": {
+        "X": 10,
+        "Y": 10
+      },
+      "Path": "",
+      "ColorPalette": [
+        "White"
+       ],
+       "Entrance": {
+          "X": 10,
+          "Y":10
+       },
+       "Scene":""
+    }
+  ]
+}

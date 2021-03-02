@@ -31,12 +31,14 @@ namespace ConsoleRPG
 
                 if (player.EnteredDoor())
                 {
-                    for (int i = 0; i < currentScene.Buildings.Length; i++)
+                    foreach(Building building in currentScene.Buildings)
                     {
-                        if (currentScene.Buildings[i].EntranceX == player.X &&
-                            currentScene.Buildings[i].EntranceY == player.Y)
-                            player.DisplayHudMessage($"Entered {currentScene.Buildings[i].Name}");
-
+                        if(building.EntranceX == player.X && building.EntranceY == player.Y)
+                        {
+                            Console.SetCursorPosition(71, 0);
+                            
+                            changeScene(building.entrancePath);
+                        }
                     }
                 }
             }
@@ -48,9 +50,11 @@ namespace ConsoleRPG
             Update();
         }
 
-        private void changeScene(Scene scene)
+        private void changeScene(string path)
         {
-            currentScene = scene;
+            currentScene = new Scene(path, screen, player);
+            screen.Clear();
+            currentScene.Create();
         }
 
        

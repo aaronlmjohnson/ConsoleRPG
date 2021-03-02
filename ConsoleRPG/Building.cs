@@ -9,6 +9,7 @@ namespace ConsoleRPG
         private string[] colorPalette; //0: Roof 1: body 2: other
         private int entranceX;
         private int entranceY;
+        public string entrancePath;
         private string name;
         private BuildingData data; 
         public Building(BuildingData _data, Window _screen, string _filePath = " ", int _x = 0, int _y = 0)
@@ -20,6 +21,7 @@ namespace ConsoleRPG
             Y = data.Position["Y"];
             entranceX = data.Entrance["X"];
             entranceY = data.Entrance["Y"];
+            entrancePath = data.ScenePath;
             name = data.Name;
         }
 
