@@ -18,7 +18,9 @@ namespace ConsoleRPG
             string jsonData = System.IO.File.ReadAllText(_path);
             Data = JsonSerializer.Deserialize<SceneData>(jsonData);
             player = _player;
-            buildings = new Building[Data.Buildings.Length];
+            if(Data.Buildings != null)
+                buildings = new Building[Data.Buildings.Length];
+
             screen = _screen;
             
         }
@@ -28,15 +30,17 @@ namespace ConsoleRPG
             player.SetPosition(Data.PlayerStart["X"], Data.PlayerStart["Y"]);
             LoadBackground();
             DrawBackground();
-            player.Draw();
-            CreateBuildings();
 
-            foreach(Building building in buildings)
+            if(Data.Buildings != null)
             {
-                screen.Add(building);
-                building.Draw();
-            }
-                
+                CreateBuildings();
+
+                foreach (Building building in buildings)
+                {
+                    screen.Add(building);
+                    building.Draw();
+                }
+            }  
         }
 
         public void CreateBuildings()
@@ -45,6 +49,7 @@ namespace ConsoleRPG
             {
                 BuildingData building = Data.Buildings[i];
                 string[] colorPalette = building.ColorPalette;
+
                 int eX = building.Entrance["X"];
                 int eY = building.Entrance["Y"];
                 buildings[i] = new Building(building, screen, building.Path);

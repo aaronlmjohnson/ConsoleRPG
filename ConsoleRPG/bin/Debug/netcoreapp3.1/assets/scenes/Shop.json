@@ -1,0 +1,10 @@
+{
+  "Name": "Shop",
+  "Width": 70,
+  "Height": 30,
+  "Background": "./assets/backgrounds/shop.txt",
+  "PlayerStart": {
+    "X": 0,
+    "Y": 0
+  }
+}

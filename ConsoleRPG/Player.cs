@@ -11,8 +11,14 @@ namespace ConsoleRPG
         public char body { get; set; }
         private int x;
         private int y;
+        private bool active;
         public int X { get => x; }
         public int Y { get => y; }
+        private int health;
+        private int mana;
+        private int strength;
+        private int magic;
+
         public Player(int _x, int _y, Window _screen)
         {
             x = _x;
@@ -20,6 +26,12 @@ namespace ConsoleRPG
             screen = _screen;
             body = 'P';
             playerColor = ConsoleColor.Blue;
+            active = true;
+
+            health = 100;
+            mana = 3;
+            strength = 10;
+            magic = 8;
 
         }
 
@@ -48,7 +60,6 @@ namespace ConsoleRPG
                 x = orgX;
                 y = orgY;
             }
-            DisplayHudMessage($"X:{x},Y:{y}");
         }
 
         public void Draw()
@@ -97,13 +108,34 @@ namespace ConsoleRPG
             y = _y;
         }
 
-        public void DisplayHudMessage(string message)
+        public bool Active
         {
-            string _x = x.ToString();
-            Console.SetCursorPosition(71, 0);
-            Console.Write("                              ");
-            Console.SetCursorPosition(71, 0);
-            Console.Write(message);
+            get => active;
+            set => active = value;
         }
+
+        public int Health
+        {
+            get => health;
+            set => health = value;
+        }
+        public int Mana
+        {
+            get => mana;
+            set => mana = value;
+        }
+
+        public int Strength
+        {
+            get => strength;
+            set => strength = value;
+        }
+
+        public int Magic
+        {
+            get => magic;
+            set => magic = value;
+        }
+
     }
 }
